@@ -1,5 +1,5 @@
 package com.example.gameoflife2;
-
+import com.example.gameoflife2.GridCell.CellStatus;
 public class Grid {
     private GridCell[][] cells;
 
@@ -12,4 +12,18 @@ public class Grid {
             }
         }
     }
+
+    public CellStatus[][] getStatus() {
+      CellStatus[][] cellStates = new CellStatus[cells.length][];
+        for (int row = 0; row < cells.length; row++) {
+            cellStates[row] = new CellStatus[cells[row].length];
+            for (int col = 0; col < cells[row].length; col++) {
+                cellStates[row][col] = cells[row][col].getStatus();
+            }
+        }
+        return cellStates;
+    }
+
+
+    
 }
