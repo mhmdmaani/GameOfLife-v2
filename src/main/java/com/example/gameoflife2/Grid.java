@@ -1,6 +1,5 @@
 package com.example.gameoflife2;
 import com.example.gameoflife2.GridCell.CellStatus;
-import javafx.scene.control.Cell;
 
 public class Grid {
     private GridCell[][] cells;
@@ -26,7 +25,7 @@ public class Grid {
         return cellStates;
     }
 
-    public int checkCellIsLive(CellStatus[][] state, int row, int col) {
+    public int countCellIsLive(CellStatus[][] state, int row, int col) {
         if (col >= 0 && col < state[row].length) {
             if (state[row][col] == CellStatus.ALIVE) {
                 return 1;
@@ -38,10 +37,19 @@ public class Grid {
     public int getNumberOfAliveNeighborsInRow(CellStatus[][] state, int row, int col) {
         int numberOfAliveNeighbor = 0;
         if (row >= 0 && row < state.length) {
-            numberOfAliveNeighbor += checkCellIsLive(state, row, col - 1);
-            numberOfAliveNeighbor += checkCellIsLive(state, row, col);
-            numberOfAliveNeighbor += checkCellIsLive(state, row, col + 1);
+            numberOfAliveNeighbor += countCellIsLive(state, row, col - 1);
+            numberOfAliveNeighbor += countCellIsLive(state, row, col);
+            numberOfAliveNeighbor += countCellIsLive(state, row, col + 1);
         }
+        return numberOfAliveNeighbor;
+    }
+
+    public int getNumberOfAliveNeighbors(CellStatus[][] state, int row, int col) {
+        int numberOfAliveNeighbor = 0;
+        numberOfAliveNeighbor += getNumberOfAliveNeighborsInRow(state, row - 1, col);
+        numberOfAliveNeighbor += countCellIsLive(state, row, col - 1);
+        numberOfAliveNeighbor += countCellIsLive(state, row, col + 1);
+        numberOfAliveNeighbor += getNumberOfAliveNeighborsInRow(state, row + 1, col);
         return numberOfAliveNeighbor;
     }
 
