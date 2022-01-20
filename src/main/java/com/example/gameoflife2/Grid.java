@@ -1,5 +1,7 @@
 package com.example.gameoflife2;
 import com.example.gameoflife2.GridCell.CellStatus;
+import javafx.scene.control.Cell;
+
 public class Grid {
     private GridCell[][] cells;
 
@@ -24,6 +26,23 @@ public class Grid {
         return cellStates;
     }
 
+    public int checkCellIsLive(CellStatus[][] state, int row, int col) {
+        if (col >= 0 && col < state[row].length) {
+            if (state[row][col] == CellStatus.ALIVE) {
+                return 1;
+            }
+        }
+        return 0;
+    }
 
-    
+
+
+
+
+
+
+
+
+
+
 }

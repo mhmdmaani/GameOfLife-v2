@@ -3,6 +3,7 @@ import org.junit.Test;
 import com.example.gameoflife2.GridCell.CellStatus;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 
 public class TestGrid {
@@ -20,5 +21,17 @@ public class TestGrid {
 
         CellStatus[][] actual = uut.getStatus();
         assertArrayEquals(original, actual);
+    }
+    @Test
+    public void TestCheckIfCellIsLive(){
+        CellStatus[][] original = new CellStatus[][] {
+                { X, O, X },
+                { O, O, O },
+                { O, X, X },
+        };
+        Grid uut = new Grid(original);
+
+        int status = uut.checkCellIsLive(uut.getStatus(),0,0);
+        assertEquals(status,1);
     }
 }
