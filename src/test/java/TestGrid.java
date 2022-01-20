@@ -34,4 +34,31 @@ public class TestGrid {
         int status = uut.checkCellIsLive(uut.getStatus(),0,0);
         assertEquals(status,1);
     }
+
+    @Test
+    public void testGetNumberOfAliveNeighborsInRowIfItIsAlive(){
+        CellStatus[][] original = new CellStatus[][] {
+                { X, O, X },
+                { O, O, O },
+                { O, X, X },
+        };
+        Grid uut = new Grid(original);
+
+        int status = uut.getNumberOfAliveNeighborsInRow(uut.getStatus(),0,0);
+        assertEquals(status,1);
+    }
+
+    @Test
+    public void testGetNumberOfAliveNeighborsInRowIfItIsDeadAndHasDeadNeighbors(){
+        CellStatus[][] original = new CellStatus[][] {
+                { X, O, X },
+                { O, O, O },
+                { O, X, X },
+        };
+        Grid uut = new Grid(original);
+
+        int status = uut.getNumberOfAliveNeighborsInRow(uut.getStatus(),1,1);
+        assertEquals(status,0);
+    }
+
 }

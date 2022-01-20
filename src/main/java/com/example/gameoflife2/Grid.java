@@ -35,6 +35,19 @@ public class Grid {
         return 0;
     }
 
+    public int getNumberOfAliveNeighborsInRow(CellStatus[][] state, int row, int col) {
+        int numberOfAliveNeighbor = 0;
+        if (row >= 0 && row < state.length) {
+            numberOfAliveNeighbor += checkCellIsLive(state, row, col - 1);
+            numberOfAliveNeighbor += checkCellIsLive(state, row, col);
+            numberOfAliveNeighbor += checkCellIsLive(state, row, col + 1);
+        }
+        return numberOfAliveNeighbor;
+    }
+
+
+
+
 
 
 
