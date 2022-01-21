@@ -31,6 +31,10 @@ public class Grid {
         return cellStates;
     }
 
+    public GridCell[][] getCells(){
+        return cells;
+    }
+
     public int countCellIsLive(CellStatus[][] state, int row, int col) {
         if (col >= 0 && col < state[row].length) {
             if (state[row][col] == CellStatus.ALIVE) {
@@ -69,30 +73,6 @@ public class Grid {
             }
         }
     }
-
-
-    public void displayGrid(Stage stage){
-        GridPane gridPane = new GridPane();
-        gridPane.setPadding(new Insets(20,20,20,20));
-        for (int row = 0; row < cells.length; row++) {
-            for (int col = 0; col < cells[row].length; col++) {
-
-                Rectangle rect = new Rectangle(100,100);
-                 if(cells[row][col].getStatus()==CellStatus.ALIVE){
-                     rect.setFill(Color.GREEN);
-                 }else{
-                     rect.setFill(Color.BLACK);
-                 }
-                gridPane.add(rect,row,col);
-            }
-        }
-
-        Scene sc = new Scene(gridPane,500,500);
-        stage.setScene(sc);
-        stage.show();
-    }
-
-
 
 
 
