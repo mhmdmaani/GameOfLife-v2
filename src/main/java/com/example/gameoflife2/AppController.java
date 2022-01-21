@@ -45,14 +45,9 @@ public class AppController extends VBox {
 
         grid = new Grid(original);
         gridPane = new GridPane();
-        gridPane.setGridLinesVisible(true);
         setGridPane(grid.getCells());
     }
 
-
-    public GridPane getGridPane() {
-        return gridPane;
-    }
 
     public void setGridPane(GridCell[][] cells ){
          gridPane.getChildren().clear();
@@ -61,9 +56,9 @@ public class AppController extends VBox {
 
                 Rectangle rect = new Rectangle(100,100);
                 if(cells[row][col].getStatus() == GridCell.CellStatus.ALIVE){
-                    rect.setFill(Color.GREEN);
+                    rect.setFill(Color.BLACK);
                 }else{
-                    rect.setFill(Color.GRAY);
+                    rect.setFill(Color.WHITE);
                 }
                 gridPane.add(rect,row,col);
             }
@@ -74,5 +69,32 @@ public class AppController extends VBox {
     public void onNextGenerationClick(){
      grid.update();
      setGridPane(grid.getCells());
+    }
+
+    public  void onRestGeneration(){
+        GridCell.CellStatus[][] original = new GridCell.CellStatus[][] {
+                { X, O, X },
+                { O, O, O },
+                { O, X, X },
+
+                { X, O, X },
+                { O, O, O },
+                { O, X, X },
+
+                { X, O, X },
+                { O, O, O },
+                { O, X, X },
+
+                { X, O, X },
+                { O, O, O },
+                { O, X, X },
+
+                { X, O, X },
+                { O, O, O },
+                { O, X, X },
+        };
+
+        grid = new Grid(original);
+        setGridPane(grid.getCells());
     }
 }

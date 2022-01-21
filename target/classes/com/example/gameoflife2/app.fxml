@@ -5,12 +5,16 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.GridPane?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.gameoflife2.HelloController">
+      fx:controller="com.example.gameoflife2.AppController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
+        <GridPane fx:id="gridPane" />
+    <Button text="Next Generation" onAction="#onNextGenerationClick" />
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+    <Button text="Reset" onAction="#onRestGeneration" />
+
 </VBox>
